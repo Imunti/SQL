@@ -1,0 +1,26 @@
+/**
+I created a table called store, then inseted some values to my table and displayed the content of the table ordered by price, and the count of Catagory called Bathroom
+**/
+
+
+Create table Store( id integer primary key, name text, price integer, catagory text, quantity integer);
+
+insert into Store values (1, "pants", 15, "cloth", 13);
+insert into Store values (2, "tops", 13, "cloth", 5);
+insert into Store values (3, "Jacket", 25, "cloth", 7);
+insert into Store values (4, "Soap", 7, "Bath room", 6);
+insert into Store values (5, "Shampoo", 9, "Bathroom", 2);
+insert into Store values (6, "Hair oil", 10, "Bathroom", 3);
+insert into Store values (7, "Hair mask", 5, "Bathroom", 6);
+insert into Store values (8, "Conditioner", 8, "Bathroom", 12);
+insert into Store values (9, "Pan", 44, "Kitchen", 6);
+insert into Store values (10, "Pot", 35, "Kitchen", 8);
+insert into Store values (11, "Glass", 12, "Kitchen", 6);
+insert into Store values (12, "Spoon", 5, "Kitchen", 8);
+insert into Store values (13, "Fork", 7, "Kitchen", 10);
+insert into Store values (14, "Knife", 12, "Kitchen", 4);
+insert into Store values (15, "Mug", 13, "Kitchen", 9);
+
+Select * from Store order by price;
+
+Select count(Catagory) from Store where catagory = "Bathroom";
