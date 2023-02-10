@@ -1,0 +1,51 @@
+/**
+On this challenge I created a table called student_grades and inserted and inserted some values. Then I changed the values in fraction_completed cloumns 
+to a percenttage, rounded the values to the nearest integer and renamed the column as percent_completed for readability purpose
+
+Next, I use case statements to find out what grade the students recieve based on the percent_completed from A - f. I Also used COUNT with GROUP BY to
+show the number of students with each of those grades 
+**/
+
+CREATE TABLE student_grades (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    number_grade INTEGER,
+    fraction_completed REAL);
+    
+INSERT INTO student_grades (name, number_grade, fraction_completed)
+    VALUES ("Winston", 90, 0.805);
+INSERT INTO student_grades (name, number_grade, fraction_completed)
+    VALUES ("Winnefer", 95, 0.901);
+INSERT INTO student_grades (name, number_grade, fraction_completed)
+    VALUES ("Winsteen", 85, 0.906);
+INSERT INTO student_grades (name, number_grade, fraction_completed)
+    VALUES ("Wincifer", 66, 0.7054);
+INSERT INTO student_grades (name, number_grade, fraction_completed)
+    VALUES ("Winster", 76, 0.5013);
+INSERT INTO student_grades (name, number_grade, fraction_completed)
+    VALUES ("Winstonia", 82, 0.9045);
+    
+SELECT name, number_grade, Round(fraction_completed *100) as percent_completed from student_grades; 
+
+SELECT number_grade,
+    CASE 
+        WHEN Round(fraction_completed *100) > 90 THEN "A"
+        WHEN Round(fraction_completed *100) > 80 THEN "B"
+        WHEN Round(fraction_completed *100) > 70 THEN "C"
+        WHEN Round(fraction_completed *100) > 60 THEN "D"
+        ELSE "F"
+        END letter_grade
+FROM student_grades;
+
+SELECT COUNT(*),
+    CASE 
+        WHEN Round(fraction_completed *100) > 90 THEN "A"
+        WHEN Round(fraction_completed *100) > 80 THEN "B"
+        WHEN Round(fraction_completed *100) > 70 THEN "C"
+        WHEN Round(fraction_completed *100) > 60 THEN "D"
+        ELSE "F"
+        END letter_grade
+FROM student_grades
+GROUP BY letter_grade
+        
+
