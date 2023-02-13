@@ -1,0 +1,28 @@
+/**
+In this excercises I used tables found on https://bit.io/CharlotteChaze/BreakIntoTech
+We have two tables named netflix_people and netflix_titles_info under CharlotteChaze/BreakIntoTech repo/database
+On the first excerise I gave alias people to the table "CharlotteChaze/BreakIntoTech"."netflix_people"
+and titles to the table "CharlotteChaze/BreakIntoTech"."netflix_titles_info" to make it easy to write whenever I wrire the table names.
+I joined the above two table using their primary key show_id to get the show_id from table people, director from table people, title
+from table titles and type from table titles
+
+On the second excerise I wanted to find the director of the movie Bright Star.
+The director column can be found on the CharlotteChaze/BreakIntoTech"."netflix_people which I renamed as people and
+title and type of the movie was found in the table titles. Therefore I used Left join on the two tables using their common column show_id to get the result
+
+**/
+
+SELECT
+people.show_id,
+people.director,
+titles.title,
+titles.type
+FROM "CharlotteChaze/BreakIntoTech"."netflix_people" people
+LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+ON people.show_id=titles.show_id;
+
+SELECT director
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
+LEFT JOIN  "CharlotteChaze/BreakIntoTech"."netflix_people" people
+ON titles.show_id=people.show_id
+where titles.title = 'Bright Star'; 
