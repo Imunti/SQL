@@ -26,3 +26,35 @@ FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" titles
 LEFT JOIN  "CharlotteChaze/BreakIntoTech"."netflix_people" people
 ON titles.show_id=people.show_id
 where titles.title = 'Bright Star'; 
+
+/**
+Here's another example of left join where I created two table called Celebs and Movie with few rows in each tables.
+I used outer join to get all the data from the left table i.e table Celebs and the common row the right table, Movie table 
+**/
+
+name Text,
+famous_for Text);
+
+Create Table Movie(id INTEGER PRIMARY KEY,
+name Text,
+movie_yr Text);
+
+INSERT INTO Celebs(id, name, famous_for)
+Values(1, "Kim K", "Reality");
+
+INSERT INTO Celebs(id, name, famous_for)
+Values(2, "Todd Kresley", "Reality");
+
+INSERT INTO Celebs(id, name, famous_for)
+Values(3, "Safari", "Song");
+
+INSERT INTO Movie(id, name, movie_yr)
+Values(1, "Wakanda", "2021");
+
+INSERT INTO Movie(id, name, movie_yr)
+Values(2, "Avatar", "2002");
+
+Select C.name C_name, C.famous_for, m.name Movie, m.movie_yr
+from Celebs c
+left join Movie m
+on C.id=m.id
