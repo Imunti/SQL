@@ -1,0 +1,14 @@
+/* Using fake 500 fortune company database, we can use mutliple functions to manuplate 
+company's benefit suck as paid_time_off_days and maternity_leave_weeks to see if the company has great benefit 
+from either one of the mostly wanted benefit
+*/
+
+
+select company_name, sum(employees), paid_time_off_days , maternity_leave_weeks ,
+case when paid_time_off_days >= 20 or maternity_leave_weeks >= 12 then "This is a graet company"
+when paid_time_off_days >= 15 or maternity_leave_weeks >= 8 then "Company is ok but needs to work on their benefit!"
+else "Don't even apply to this company!"
+End as "Company rating per benefit" 
+from fortune_companies
+group by company_name
+
